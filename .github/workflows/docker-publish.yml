@@ -31,5 +31,5 @@ jobs:
         context: ${{ github.workspace }}
         file: ./Dockerfile
         push: true
-        tags: bbachkaladocker/lyon:${{ github.sha }}
+        tags: bbachkaladocker/lyon:${{ github.sha::8 }}
 
