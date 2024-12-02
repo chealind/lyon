@@ -24,6 +24,8 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: bbachkaladocker/lyon
+        tags: |
+          type=sha,format=short,prefix=
     - name: Build and push Docker image
       id: push
       uses: docker/build-push-action@v6
@@ -31,5 +33,5 @@ jobs:
         context: ${{ github.workspace }}
         file: ./Dockerfile
         push: true
-        tags: bbachkaladocker/lyon:${{ github.sha::8 }}
-
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
