@@ -31,7 +31,7 @@ jobs:
       id: push
       uses: docker/build-push-action@v6
       with:
-        context: ${{ github.workspace }}
-        file: nginx/Dockerfile
+        context: ${{ github.workspace }}/nginx
+        file: ./Dockerfile
         push: true
         tags: bbachkaladocker/lyon:latest
