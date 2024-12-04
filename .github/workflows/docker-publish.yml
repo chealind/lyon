@@ -21,10 +21,17 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: bbachkaladocker/lyon
+
     - name: Build and push Docker image
+      id: push
       uses: docker/build-push-action@v6
       with:
         context: ${{ github.workspace }}
-        file: ./nginx/Dockerfile
+        file: nginx/Dockerfile
         push: true
         tags: bbachkaladocker/lyon:latest
