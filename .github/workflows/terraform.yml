@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+env:
+  access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 jobs:
   terraform:
     name: 'Terraform'
