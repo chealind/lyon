@@ -36,6 +36,13 @@ module "ec2_instances" {
   ami                    = module.ami-ubuntu.ami_id
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.nginx_sg.id]
+  user_data              = <<-EOF
+              #!/bin/bash
+              sudo apt-get update -y
+              sudo apt-get install docker.io -y
+              sudo service docker start
+              sudo usermod -aG docker ubuntu
+              EOF
 }
 
 resource "aws_default_vpc" "default" {}
