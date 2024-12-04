@@ -43,7 +43,7 @@ module "ec2_instances" {
               sudo service docker start
               sudo usermod -aG docker ubuntu
               sudo docker run -d -p 80:80 --rm bbachkaladocker/lyon
-              sudo docker run -d --name watchtower --interval 60 -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower
+              sudo docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 60
               EOF
 }
 
