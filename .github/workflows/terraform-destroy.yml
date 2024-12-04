@@ -12,17 +12,11 @@ env:
 
 jobs:
   terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
-    environment: production
 
-    defaults:
-      run:
-        shell: bash
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
